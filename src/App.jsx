@@ -1,6 +1,6 @@
 // import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 // import Layout from './components/Layout';
-// import CoverLetterManagement from './pages/CoverLetterManagement';
+// import MyCoverLetter from './pages/MyCoverLetter';
 // import AICoverLetter from './pages/AICoverLetter';
 // import MyCoverLetterDetail from './pages/MyCoverLetterDetail';
 // import AICoverLetterDetail from './pages/AICoverLetterDetail';
@@ -23,7 +23,7 @@
 //           <Routes>
 //             <Route path="/" element={<Index />} />
 //             <Route path="/login" element={<Login />} />
-//             <Route path="/my-cover-letter" element={<PrivateRoute><CoverLetterManagement /></PrivateRoute>} />
+//             <Route path="/my-cover-letter" element={<PrivateRoute><MyCoverLetter /></PrivateRoute>} />
 //             <Route path="/ai-cover-letter" element={<PrivateRoute><AICoverLetter /></PrivateRoute>} />
 //             <Route path="/my-cover-letter/:id" element={<PrivateRoute><MyCoverLetterDetail /></PrivateRoute>} />
 //             <Route path="/ai-cover-letter/:id" element={<PrivateRoute><AICoverLetterDetail /></PrivateRoute>} />
@@ -39,7 +39,7 @@
 // App.jsx
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
-import CoverLetterManagement from './pages/CoverLetterManagement';
+import MyCoverLetter from './pages/MyCoverLetter.jsx';
 import AICoverLetter from './pages/AICoverLetter';
 import MyCoverLetterDetail from './pages/MyCoverLetterDetail';
 import AICoverLetterDetail from './pages/AICoverLetterDetail';
@@ -62,7 +62,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/my-cover-letter" element={<PrivateRoute><CoverLetterManagement /></PrivateRoute>} />
+            <Route path="/my-cover-letter" element={<PrivateRoute><MyCoverLetter /></PrivateRoute>} />
             <Route path="/ai-cover-letter" element={<PrivateRoute><AICoverLetter /></PrivateRoute>} />
             <Route path="/my-cover-letter/:id" element={<PrivateRoute><MyCoverLetterDetail /></PrivateRoute>} />
             <Route path="/ai-cover-letter/:id" element={<PrivateRoute><AICoverLetterDetail /></PrivateRoute>} />

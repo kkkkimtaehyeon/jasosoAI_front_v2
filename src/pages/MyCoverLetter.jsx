@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Plus, FileText, Calendar, Edit, Trash2 } from 'lucide-react'
 import CoverLetterUpload from '../components/CoverLetterUpload'
-import './CoverLetterManagement.css'
+import './MyCoverLetter.css'
 
-const CoverLetterManagement = () => {
+const MyCoverLetter = () => {
   const navigate = useNavigate()
   const [showUploadForm, setShowUploadForm] = useState(false)
   const [coverLetters, setCoverLetters] = useState([
@@ -53,8 +53,6 @@ const CoverLetterManagement = () => {
     <div className="cover-letter-management">
       <div className="page-header">
         <div className="page-title">
-          <h1>내 자소서 관리</h1>
-          <p>직접 작성한 자소서를 관리하세요</p>
         </div>
         <button
           className="upload-btn"
@@ -102,4 +100,4 @@ const CoverLetterManagement = () => {
   )
 }
 
-export default CoverLetterManagement
+export default MyCoverLetter

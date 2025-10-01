@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { Plus, Bot, Link as LinkIcon, FileText, Wand2, Calendar, Edit, Trash2 } from 'lucide-react'
 import './AICoverLetter.css'
+import {useNavigate} from "react-router-dom";
 
 const AICoverLetter = () => {
   const [activeTab, setActiveTab] = useState('list') // 'list' 또는 'create'
   const [jobUrl, setJobUrl] = useState('')
+  const navigate = useNavigate();
   const [items, setItems] = useState([
     { question: '', wordLimit: 500 }
   ])
@@ -106,15 +108,13 @@ const AICoverLetter = () => {
   }
 
   const handleViewDetail = (coverLetter) => {
-    window.location.href = `/ai-cover-letter/${coverLetter.id}`
+    navigate(`/ai-cover-letter/${coverLetter.id}`)
   }
 
   return (
     <div className="ai-cover-letter">
       <div className="page-header">
         <div className="page-title">
-          <h1>AI 자소서</h1>
-          <p>AI가 생성한 자소서를 관리하고 새로운 자소서를 생성하세요</p>
         </div>
         <div className="header-tabs">
           <button

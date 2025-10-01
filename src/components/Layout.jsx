@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { FileText, Bot } from 'lucide-react'
 import './Layout.css'
@@ -7,9 +7,19 @@ import { useNavigate } from 'react-router-dom';
 
 const Layout = ({ children }) => {
   const location = useLocation()
-  const [activeTab, setActiveTab] = useState(
-    location.pathname === '/' ? 'management' : 'ai'
-  )
+  const [activeTab, setActiveTab] = useState('my-cover-letter');
+
+  // ✅ URL 경로에 따라 activeTab 자동 설정
+  useEffect(() => {
+    if (location.pathname.startsWith('/ai-cover-letter')) {
+      setActiveTab('ai-cover-letter');
+    } else {
+      setActiveTab('my-cover-letter');
+    }
+  }, [location.pathname]);
+  // const [activeTab, setActiveTab] = useState(
+  //   location.pathname === '/' ? 'management' : 'ai'
+  // )
   const { user, logout } = useAuth();
   const [showUserMenu, setShowUserMenu] = useState(false);
   const navigate = useNavigate();
@@ -45,28 +55,28 @@ const Layout = ({ children }) => {
         {user ? (
             <>
               <nav className="hidden md:flex items-center gap-6 text-sm font-medium text-slate-600">
-                <button
-                    onClick={() => setActiveTab('management')}
+                <Link
+                    to="/my-cover-letter"
                     className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                        activeTab === 'management'
+                        activeTab === 'my-cover-letter'
                             ? 'text-blue-600 bg-blue-50'
                             : 'hover:bg-slate-100'
                     }`}
                 >
-                  <FileText size={20}/>
+                  <FileText size={20} />
                   자소서 관리
-              </button>
-              <button
-                onClick={() => setActiveTab('ai')}
-                className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
-                  activeTab === 'ai' 
-                    ? 'text-blue-600 bg-blue-50' 
-                    : 'hover:bg-slate-100'
-                }`}
-              >
-                <Bot size={20} />
-                AI 자소서
-              </button>
+                </Link>
+                <Link
+                    to="/ai-cover-letter"
+                    className={`flex items-center gap-2 px-3 py-2 rounded-lg transition-colors ${
+                        activeTab === 'ai-cover-letter'
+                            ? 'text-blue-600 bg-blue-50'
+                            : 'hover:bg-slate-100'
+                    }`}
+                >
+                  <Bot size={20} />
+                  AI 자소서
+                </Link>
             </nav>
             
             <div className="relative">
