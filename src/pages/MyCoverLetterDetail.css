@@ -1,0 +1,70 @@
+.my-cover-letter-detail {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 2rem 0;
+}
+
+.my-cover-letter-detail .card {
+  border: none;
+  border-radius: 0.75rem;
+}
+
+.my-cover-letter-detail .card-header {
+  border-radius: 0.75rem 0.75rem 0 0 !important;
+}
+
+.editing-mode .card {
+  transition: all 0.3s ease;
+}
+
+.editing-mode .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.viewing-mode .card {
+  transition: all 0.3s ease;
+}
+
+.viewing-mode .card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.btn {
+  border-radius: 0.5rem;
+  font-weight: 500;
+}
+
+.btn-outline-primary:hover,
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-outline-danger:hover,
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+@media (max-width: 768px) {
+  .my-cover-letter-detail {
+    padding: 1rem 0;
+  }
+  
+  .d-flex.gap-2 {
+    flex-direction: column;
+    gap: 0.5rem !important;
+  }
+  
+  .d-flex.gap-2 .btn {
+    width: 100%;
+  }
+}
