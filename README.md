@@ -1,16 +1,15 @@
-# React + Vite
+# TODO
+## UI
+- 자소서 카드는 한 줄에 3개로 UI 개선
+- 자소서 상세조회 페이지에 삭제 버튼 추가
+- 수정 모드에만 항목 추가 버튼(+) 보이게 수정
+- 자소서 목록 페이지네이션 추가
+- AI 자소서 상세보기에 채용공고 URL 추가
+- 자소서 항목 작성 UI 개선
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 기능
+- AI 자소서 상세보기에 "이 내용 사용하기" 누르면 현재 작성 중인 항목에 줄바꿈하고 추가됨
+- 수정 시 개별 항목 수정 -> 저장 vs 개별 항목 수정 -> 전체 저장
+- 수정 시 자소서 항목 추가 가능하게 수정
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

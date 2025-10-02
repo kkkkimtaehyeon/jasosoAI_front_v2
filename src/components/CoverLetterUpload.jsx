@@ -1,15 +1,18 @@
 import { useState } from 'react'
 import { X, Plus, Save } from 'lucide-react'
 import './CoverLetterUpload.css'
+import usePostMyCoverLetter from '../hooks/usePostMyCoverLetter.js';
 
 const CoverLetterUpload = ({ onUpload, onClose }) => {
   const [title, setTitle] = useState('')
   const [items, setItems] = useState([
-    { question: '', content: '' }
+    { question: '', content: '', char_limit: 1500 }
   ])
+  const { postCoverLetter } = usePostMyCoverLetter();
+  const [loading, setLoading] = useState(false);
 
   const addItem = () => {
-    setItems(prev => [...prev, { question: '', content: '' }])
+    setItems(prev => [...prev, { question: '', content: '', char_limit: 1500 }])
   }
 
   const removeItem = (index) => {
@@ -24,7 +27,7 @@ const CoverLetterUpload = ({ onUpload, onClose }) => {
     ))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!title.trim()) {
       alert('제목을 입력해주세요.')
@@ -40,10 +43,23 @@ const CoverLetterUpload = ({ onUpload, onClose }) => {
       return
     }
 
-    onUpload({
-      title: title.trim(),
-      items: validItems
-    })
+    setLoading(true);
+    try {
+      const savedCoverLetter = await postCoverLetter({
+        title: title.trim(),
+        items: validItems.map(item => ({
+          question: item.question,
+          char_limit: Number(item.char_limit) || 1500,
+          content: item.content,
+        }))
+      });
+      setLoading(false);
+      onUpload && onUpload(savedCoverLetter);
+      onClose();
+    } catch (err) {
+      setLoading(false);
+      alert('업로드 실패: ' + (err?.response?.data?.detail || err.message));
+    }
   }
 
   return (
@@ -98,6 +114,18 @@ const CoverLetterUpload = ({ onUpload, onClose }) => {
                       />
                     </div>
                     <div className="field-group">
+                      <label>글자수 제한</label>
+                      <input
+                        type="number"
+                        value={item.char_limit}
+                        onChange={(e) => updateItem(index, 'char_limit', e.target.value)}
+                        min="100"
+                        max="5000"
+                        step="50"
+                        required
+                      />
+                    </div>
+                    <div className="field-group">
                       <label>내용</label>
                       <textarea
                         value={item.content}
@@ -122,12 +150,12 @@ const CoverLetterUpload = ({ onUpload, onClose }) => {
           </div>
 
           <div className="form-actions">
-            <button type="button" className="cancel-btn" onClick={onClose}>
+            <button type="button" className="cancel-btn" onClick={onClose} disabled={loading}>
               취소
             </button>
-            <button type="submit" className="save-btn">
+            <button type="submit" className="save-btn" disabled={loading}>
               <Save size={16} />
-              저장하기
+              {loading ? '저장 중...' : '저장하기'}
             </button>
           </div>
         </form>

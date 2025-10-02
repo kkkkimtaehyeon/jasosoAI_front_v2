@@ -84,7 +84,7 @@ const Layout = ({ children }) => {
                 onClick={() => setShowUserMenu(!showUserMenu)}
                 className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold hover:bg-blue-700 transition-colors"
               >
-                {user.displayName.charAt(0)}
+                {user.name.charAt(0)}
               </button>
               
               {showUserMenu && (
@@ -95,7 +95,7 @@ const Layout = ({ children }) => {
                   />
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-200 py-1 z-20">
                     <div className="px-4 py-2 border-b border-slate-200">
-                      <p className="text-sm font-medium text-slate-900">{user.displayName}</p>
+                      <p className="text-sm font-medium text-slate-900">{user.name}</p>
                       <p className="text-xs text-slate-500">{user.email}</p>
                     </div>
                     <button

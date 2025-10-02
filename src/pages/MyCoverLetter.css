@@ -81,7 +81,8 @@
 
 .cover-letter-list {
   display: grid;
-  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
 }
 
 .cover-letter-item {

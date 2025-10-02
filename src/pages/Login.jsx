@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
-  const { user, login } = useAuth();
+  const { user, login, googleLogin } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -19,7 +19,7 @@ const Login = () => {
         </div>
         <button
           className="w-full flex items-center justify-center gap-2 bg-white border border-slate-300 rounded-lg px-4 py-3 font-semibold text-slate-700 hover:bg-slate-100 transition mb-4"
-          onClick={() => login('google')}
+          onClick={googleLogin}
         >
           <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google" className="w-5 h-5" />
           구글 계정으로 로그인
